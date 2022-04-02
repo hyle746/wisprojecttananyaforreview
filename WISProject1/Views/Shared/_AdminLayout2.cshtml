@@ -1,0 +1,68 @@
+﻿@using WISProject1.Models.Home;
+@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @*@Styles.Render("~/Content/css")*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/MyMainLayOut.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+
+    <div class="container">
+        <div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <div class="logo">
+                        <h1><a href="/">WIS <span> School  ^_^</span></a></h1>
+
+                        <p>Welcome!!</p>
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="nav-menus">
+                    <ul class="nav nav-pills">
+                        <li @*class="active"*@><a style="border-radius:initial;" href="#"></a></li>
+                        <li @*class="active"*@><a style="border-radius:initial;" href="#"></a></li>
+                        <li @*class="active"*@><a style="border-radius:initial;" href="#"></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            @RenderBody()
+            <hr />
+            <footer>
+                <div class="row">
+                    <div class="col-md-12 copyright">
+                        <div class="col-md-6-cal-sm-6 copyright-left">
+                            <p>&copy; @DateTime.Now.Year - WIS School. All right reserved.</p>
+                            <p>  AIS ID: 09217561 </p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </footer>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
