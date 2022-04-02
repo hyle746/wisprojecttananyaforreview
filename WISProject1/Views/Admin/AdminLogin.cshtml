@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "AdminLogin";
+    Layout = "~/Views/Shared/_AdminLayout2.cshtml";
+}
+
+
+<h2>AdminLogin</h2>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AdminLogin</title>
+</head>
+<body>
+    <div>
+    </div>
+</body>
+</html>
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+
+            @Html.AntiForgeryToken()
+            @*<h>Hello Home</h>*@
+            <hr />
+
+            <form class="user">
+
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-user" id="exampleInputUser" aria-describedby="textHelp" placeholder="Enter Username">
+                </div>
+
+
+                <div class="form-group">
+                    <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                </div>
+                <a href="#" onclick="checkLogin()" class="btn btn-default">Login</a>
+
+            </form>
+
+
+            <p></p>
+            <p>
+                @Html.ActionLink("Admin Register", "AdminRegister", "Admin")
+            </p>
+
+
+        </section>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script>
+    function checkLogin() {
+
+        var data = JSON.stringify({
+            //Email: $("#exampleInputEmail").val(),
+            username: $("#exampleInputUser").val(),
+            password: $("#exampleInputPassword").val()
+        });
+        return $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            url: "/Admin/CheckLogin",
+            data: data,
+            success: function (result) {
+                if (result == true) {
+                    alert("Welcome to our website")
+                    window.location.href = "/Admin/Product";
+                }
+                else {
+                    alert("Invalid username and password")
+                    window.location.href = "AdminLogin";
+                }
+
+            },
+            error: function () {
+                alert("Error!")
+            }
+        });
+    }
+
+</script>
